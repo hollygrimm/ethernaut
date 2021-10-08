@@ -2,6 +2,8 @@
 
 Here you will find tests and solutions in HardHat for https://ethernaut.openzeppelin.com/
 
+Pull Requests / Contributions are welcomed!
+
 # Quick start
 
 ```sh
@@ -42,3 +44,6 @@ Supply the private key of the contract owner in .env. **Never** share your priva
 
 ## 1. Fallback
 Fallback [README.md](1_fallback/README.md)
+
+## 3. Coin Flip
+Coin Flip [README.md](3_coinflip/README.md)
