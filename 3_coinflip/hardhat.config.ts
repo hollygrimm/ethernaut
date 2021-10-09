@@ -7,21 +7,12 @@ import 'hardhat-gas-reporter';
 import '@nomiclabs/hardhat-etherscan';
 import 'hardhat-typechain';
 import 'solidity-coverage';
+import 'hardhat-abi-exporter';
 
-/**
- *
- *
- *
- * TO ENABLE DEPLOYMENT AND OPERATIONS TASKS
- *        UNCOMMENT LINES BELOW
- *
- *
- */
-
-// import './tasks/accounts';
-// import './tasks/deployment/deploycoinflip';
-// import './tasks/deployment/deployhackcoinflip';
-// import './tasks/operations/coinflip';
+import './tasks/accounts';
+import './tasks/deployment/deploycoinflip';
+import './tasks/deployment/deployhackcoinflip';
+import './tasks/operations/coinflip';
 
 const INFURA_API_KEY = process.env.INFURA_API_KEY || '';
 const MAINNET_PRIVATE_KEY =
@@ -60,6 +51,14 @@ const config: HardhatUserConfig = {
         currency: 'USD',
         gasPrice: 21,
     },
+    abiExporter: {
+        path: './data/abi',
+        clear: true,
+        flat: true,
+        only: [],
+        spacing: 2,
+        pretty: true,
+    }
 };
 
 export default config;

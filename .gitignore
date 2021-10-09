@@ -8,4 +8,4 @@ coverage*
 .openzeppelin
 package-lock.json
 *.js
-*/.env.contract
+.env.contract

@@ -6,7 +6,7 @@ import { TASK_WITHDRAW } from '../task-names';
 import { Network } from '@ethersproject/networks/lib/types';
 import { BigNumber } from '@ethersproject/bignumber';
 
-import { abi } from '../../artifacts/contracts/fallback.sol/Fallback.json';
+import abi from '../../data/abi/Fallback.json';
 
 task(TASK_WITHDRAW, 'Withdraw from Contract')
   .setAction(async (_taskArgs, hre) => {

@@ -1,0 +1,5 @@
+[
+  "event WinsUpdated(uint256 value)",
+  "function getWins() view returns (uint256)",
+  "function hackFlip()"
+]

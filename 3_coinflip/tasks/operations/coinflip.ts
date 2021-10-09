@@ -6,7 +6,7 @@ import { TASK_COINFLIP } from '../task-names';
 import { Network } from '@ethersproject/networks/lib/types';
 import { BigNumber } from '@ethersproject/bignumber';
 
-import { abi } from '../../artifacts/contracts/hackcoinflip.sol/HackCoinFlip.json';
+import abi from '../../data/abi/HackCoinFlip.json';
 
 task(TASK_COINFLIP, 'Break this contract')
   .setAction(async (_taskArgs, hre) => {

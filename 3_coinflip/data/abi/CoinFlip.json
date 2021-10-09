@@ -1,0 +1,4 @@
+[
+  "function consecutiveWins() view returns (uint256)",
+  "function flip(bool _guess) returns (bool)"
+]
