@@ -1,4 +1,4 @@
-import { task, types } from 'hardhat/config';
+import { task } from 'hardhat/config';
 import { ContractReceipt, ContractTransaction } from 'ethers';
 import { HackCoinFlip } from '../../typechain';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/dist/src/signer-with-address';
@@ -6,7 +6,7 @@ import { TASK_COINFLIP } from '../task-names';
 import { Network } from '@ethersproject/networks/lib/types';
 import { BigNumber } from '@ethersproject/bignumber';
 
-const abi = require('../../artifacts/contracts/hackcoinflip.sol/HackCoinFlip.json').abi;
+import { abi } from '../../artifacts/contracts/hackcoinflip.sol/HackCoinFlip.json';
 
 task(TASK_COINFLIP, 'Break this contract')
   .setAction(async (_taskArgs, hre) => {
@@ -31,7 +31,7 @@ task(TASK_COINFLIP, 'Break this contract')
     const contract: HackCoinFlip = new hre.ethers.Contract(contractAddress, abi, userWallet) as HackCoinFlip;
 
     const hackFlipTx: ContractTransaction = await contract.connect(userWallet)
-      .hackFlip({ gasLimit: 66000 });
+      .hackFlip({ gasLimit: 150000 });
 
     let receipt: ContractReceipt = await hackFlipTx.wait();
 

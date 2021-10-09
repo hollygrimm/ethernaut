@@ -1,18 +1,15 @@
-import { task, types } from 'hardhat/config';
-import { ContractTransaction } from 'ethers';
+import { task } from 'hardhat/config';
+import { ContractReceipt, ContractTransaction } from 'ethers';
 import { Fallback } from '../../typechain';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/dist/src/signer-with-address';
 import { TASK_WITHDRAW } from '../task-names';
 import { Network } from '@ethersproject/networks/lib/types';
 import { BigNumber } from '@ethersproject/bignumber';
 
+import { abi } from '../../artifacts/contracts/fallback.sol/Fallback.json';
+
 task(TASK_WITHDRAW, 'Withdraw from Contract')
   .setAction(async (_taskArgs, hre) => {
-    const abi = [
-      'function contribute() public payable',
-      'function withdraw() public',
-    ]
-
     let userWallet: SignerWithAddress;
 
     [userWallet] = await hre.ethers.getSigners();
@@ -44,8 +41,15 @@ task(TASK_WITHDRAW, 'Withdraw from Contract')
     //await contract.connect(userWallet).fallback({ value: takeoverownerContribution });
 
     // User withdraws from contract
-    const receipt: ContractTransaction = await contract.connect(userWallet).withdraw();
-    console.log(receipt);
+    const withdrawTx: ContractTransaction = await contract.connect(userWallet).withdraw({ gasLimit: 33000 });
+
+    let contractReceipt: ContractReceipt = await withdrawTx.wait();
+
+    if (contractReceipt.status === 1) {
+      console.log("Withdraw success");
+    } else {
+      console.log('Withdraw failed');
+    }
 
     process.exit(0)
   });
