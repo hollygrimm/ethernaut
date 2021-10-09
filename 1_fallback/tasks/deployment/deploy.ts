@@ -1,11 +1,11 @@
-import { task } from "hardhat/config";
-import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signer-with-address";
-import { Fallback, Fallback__factory } from "../../typechain";
-import { TASK_DEPLOY } from "../task-names";
-import { Network } from "@ethersproject/networks/lib/types";
+import { task } from 'hardhat/config';
+import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/dist/src/signer-with-address';
+import { Fallback, Fallback__factory } from '../../typechain';
+import { TASK_DEPLOY } from '../task-names';
+import { Network } from '@ethersproject/networks/lib/types';
 
 //hh deploy --network hardhat|localhost|rinkeby|mainnet
-task(TASK_DEPLOY, "Deploy contract")
+task(TASK_DEPLOY, 'Deploy contract')
   .setAction(async (args, hre) => {
     let deployerWallet: SignerWithAddress;
 

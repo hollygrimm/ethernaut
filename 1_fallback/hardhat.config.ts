@@ -1,27 +1,27 @@
-import { config as dotEnvConfig, config as dotEnvContractConfig } from "dotenv";
+import { config as dotEnvConfig, config as dotEnvContractConfig } from 'dotenv';
 dotEnvConfig({path:'../.env'});
 dotEnvContractConfig({path:'.env.contract'});
-import { HardhatUserConfig } from "hardhat/types";
-import "@nomiclabs/hardhat-waffle";
-import "hardhat-gas-reporter";
-import "@nomiclabs/hardhat-etherscan";
-import "hardhat-typechain";
-import "solidity-coverage";
+import { HardhatUserConfig } from 'hardhat/types';
+import '@nomiclabs/hardhat-waffle';
+import 'hardhat-gas-reporter';
+import '@nomiclabs/hardhat-etherscan';
+import 'hardhat-typechain';
+import 'solidity-coverage';
 
-import "./tasks/accounts";
-import "./tasks/deployment/deploy";
-import "./tasks/operations/withdraw";
+import './tasks/accounts';
+import './tasks/deployment/deploy';
+import './tasks/operations/withdraw';
 
-const INFURA_API_KEY = process.env.INFURA_API_KEY || "";
+const INFURA_API_KEY = process.env.INFURA_API_KEY || '';
 const RINKEBY_PRIVATE_KEY =
     process.env.RINKEBY_PRIVATE_KEY ||
-    "";
+    '';
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 
 const config: HardhatUserConfig = {
-    defaultNetwork: "hardhat",
+    defaultNetwork: 'hardhat',
     solidity: {
-        compilers: [{ version: "0.6.0", settings: {} }],
+        compilers: [{ version: '0.6.0', settings: {} }],
     },
     networks: {
         hardhat: {
@@ -33,7 +33,7 @@ const config: HardhatUserConfig = {
             accounts: [RINKEBY_PRIVATE_KEY],
         },
         coverage: {
-            url: "http://127.0.0.1:8555", // Coverage launches its own ganache-cli client
+            url: 'http://127.0.0.1:8555', // Coverage launches its own ganache-cli client
         },
     },
     etherscan: {
@@ -43,7 +43,7 @@ const config: HardhatUserConfig = {
     },
     gasReporter: {
         enabled: true,
-        currency: "USD",
+        currency: 'USD',
         gasPrice: 21,
     },
 };

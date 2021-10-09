@@ -1,9 +1,9 @@
-import { ethers } from "hardhat";
-import chai from "chai";
-import { Fallback__factory, Fallback } from "../../typechain";
-import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signer-with-address";
-import { ContractTransaction } from "@ethersproject/contracts";
-import { BigNumber } from "@ethersproject/bignumber";
+import { ethers } from 'hardhat';
+import chai from 'chai';
+import { Fallback__factory, Fallback } from '../../typechain';
+import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/dist/src/signer-with-address';
+import { ContractTransaction } from '@ethersproject/contracts';
+import { BigNumber } from '@ethersproject/bignumber';
 
 const { expect } = chai;
 
@@ -12,7 +12,7 @@ let fallbackFactory: Fallback__factory;
 let deployerWallet: SignerWithAddress;
 let userWallet: SignerWithAddress;
 
-describe("Fallback Tests", () => {
+describe('Fallback Tests', () => {
     beforeEach(async () => {
         [deployerWallet, userWallet] = await ethers.getSigners();
 
@@ -26,10 +26,10 @@ describe("Fallback Tests", () => {
         expect(fallback.address).to.be.properAddress;
     });
 
-    const smallContribution: BigNumber = ethers.BigNumber.from("100000000000000");
-    const takeoverownerContribution: BigNumber = ethers.BigNumber.from("1000000000000000000000");
+    const smallContribution: BigNumber = ethers.BigNumber.from('100000000000000');
+    const takeoverownerContribution: BigNumber = ethers.BigNumber.from('1000000000000000000000');
 
-    describe("Function tests", async () => {
+    describe('Function tests', async () => {
         it('Deployer is owner', async () => {
             expect(await fallback.owner()).to.equal(deployerWallet.address);
         });
@@ -45,7 +45,7 @@ describe("Fallback Tests", () => {
         });
 
         it('User cannot contribute greater than/exactly .001 ether', async () => {
-            const toobigContribution: BigNumber = ethers.BigNumber.from("1000000000000000");
+            const toobigContribution: BigNumber = ethers.BigNumber.from('1000000000000000');
             await expect(fallback.connect(userWallet).contribute({ value: toobigContribution }))
                 .to.be.revertedWith('');
         });
@@ -61,7 +61,7 @@ describe("Fallback Tests", () => {
         });
     });
 
-    describe("User becomes Owner by calling Fallback function", async () => {
+    describe('User becomes Owner by calling Fallback function', async () => {
 
         it('User contributes less than .001 ether, calls fallback, withdraws', async () => {
             // User contributes small amount
@@ -79,7 +79,7 @@ describe("Fallback Tests", () => {
 
     });
 
-    describe("User becomes Owner with sendTransaction", async () => {
+    describe('User becomes Owner with sendTransaction', async () => {
 
         it('User contributes less than .001 ether, calls sendTransaction, withdraws', async () => {
             // User contributes small amount
