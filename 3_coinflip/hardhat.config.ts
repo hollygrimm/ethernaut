@@ -8,10 +8,20 @@ import '@nomiclabs/hardhat-etherscan';
 import 'hardhat-typechain';
 import 'solidity-coverage';
 
-import './tasks/accounts';
-import './tasks/deployment/deploycoinflip';
-import './tasks/deployment/deployhackcoinflip';
-import './tasks/operations/coinflip';
+/**
+ *
+ *
+ *
+ * TO ENABLE DEPLOYMENT AND OPERATIONS TASKS
+ *        UNCOMMENT LINES BELOW
+ *
+ *
+ */
+
+// import './tasks/accounts';
+// import './tasks/deployment/deploycoinflip';
+// import './tasks/deployment/deployhackcoinflip';
+// import './tasks/operations/coinflip';
 
 const INFURA_API_KEY = process.env.INFURA_API_KEY || '';
 const MAINNET_PRIVATE_KEY =

@@ -7,11 +7,14 @@ Clean and compile:
 ```sh
 cd 3_coinflip
 hh clean
-TS_NODE_TRANSPILE_ONLY=1 hh compile
 hh compile
+hh test
+hh coverage
 ```
 
 ## Deploy on Local Development Node
+open `hardhat.config.ts` and uncomment task imports
+
 Start a local development node
 ```sh
 hh node

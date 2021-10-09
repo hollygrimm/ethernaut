@@ -8,9 +8,19 @@ import '@nomiclabs/hardhat-etherscan';
 import 'hardhat-typechain';
 import 'solidity-coverage';
 
-import './tasks/accounts';
-import './tasks/deployment/deploy';
-import './tasks/operations/withdraw';
+/**
+ *
+ *
+ *
+ * TO ENABLE DEPLOYMENT AND OPERATIONS TASKS
+ *        UNCOMMENT LINES BELOW
+ *
+ *
+ */
+
+// import './tasks/accounts';
+// import './tasks/deployment/deploy';
+// import './tasks/operations/withdraw';
 
 const INFURA_API_KEY = process.env.INFURA_API_KEY || '';
 const RINKEBY_PRIVATE_KEY =
