@@ -2,8 +2,6 @@ import { ethers } from 'hardhat';
 import chai from 'chai';
 import { CoinFlip__factory, HackCoinFlip__factory, CoinFlip, HackCoinFlip } from '../../typechain';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/dist/src/signer-with-address';
-import { ContractTransaction } from '@ethersproject/contracts';
-import { BigNumber } from '@ethersproject/bignumber';
 
 const { expect } = chai;
 
