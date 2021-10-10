@@ -9,12 +9,16 @@ const { expect } = chai;
 
 let fallback: Fallback;
 let fallbackFactory: Fallback__factory;
+
+let wallets: SignerWithAddress[];
 let deployerWallet: SignerWithAddress;
 let userWallet: SignerWithAddress;
 
 describe('Fallback Tests', () => {
     beforeEach(async () => {
-        [deployerWallet, userWallet] = await ethers.getSigners();
+        wallets = await ethers.getSigners();
+        deployerWallet = wallets[0];
+        userWallet = wallets[1];
 
         fallbackFactory = (await ethers.getContractFactory(
             'Fallback',

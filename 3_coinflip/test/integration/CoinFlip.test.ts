@@ -9,13 +9,15 @@ let contract: CoinFlip;
 let contractFactory: CoinFlip__factory;
 let hackContract: HackCoinFlip;
 let hackContractFactory: HackCoinFlip__factory;
+let wallets: SignerWithAddress[];
 let deployerWallet: SignerWithAddress;
 let userWallet: SignerWithAddress;
 
 describe('HackCoinFlip Tests', () => {
     beforeEach(async () => {
-        [deployerWallet, userWallet] = await ethers.getSigners();
-
+        wallets = await ethers.getSigners();
+        deployerWallet = wallets[0];
+        userWallet = wallets[1];
         contractFactory = (await ethers.getContractFactory(
             'CoinFlip',
             deployerWallet
@@ -37,7 +39,7 @@ describe('HackCoinFlip Tests', () => {
 
     describe('Function tests', async () => {
         it('Hack Flip ten times', async () => {
-            for(var i = 1; i==10; i++){
+            for(let i = 1; i==10; i++){
                 await expect(hackContract.connect(userWallet).hackFlip())
                 .to.emit(hackContract, 'WinsUpdated');
     

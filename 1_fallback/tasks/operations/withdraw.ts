@@ -10,16 +10,15 @@ import abi from '../../data/abi/Fallback.json';
 
 task(TASK_WITHDRAW, 'Withdraw from Contract')
   .setAction(async (_taskArgs, hre) => {
-    let userWallet: SignerWithAddress;
-
-    [userWallet] = await hre.ethers.getSigners();
+    const wallets: SignerWithAddress[] = await hre.ethers.getSigners();
+    const userWallet = wallets[1];
     const address = await userWallet.getAddress();
     console.log(`user address: ${address}`);
 
     const network: Network = await hre.ethers.provider.getNetwork();
     console.log(`network: ${network.name}`);
 
-    var contractAddress = '';
+    let contractAddress = '';
     if (network.name === 'rinkeby') {
       contractAddress = process.env.RINKEBY_CONTRACT_ADDRESS || '';
     } else if (network.name === 'unknown') { //localhost network
@@ -43,7 +42,7 @@ task(TASK_WITHDRAW, 'Withdraw from Contract')
     // User withdraws from contract
     const withdrawTx: ContractTransaction = await contract.connect(userWallet).withdraw({ gasLimit: 33000 });
 
-    let contractReceipt: ContractReceipt = await withdrawTx.wait();
+    const contractReceipt: ContractReceipt = await withdrawTx.wait();
 
     if (contractReceipt.status === 1) {
       console.log("Withdraw success");

@@ -7,12 +7,12 @@ import { Network } from '@ethersproject/networks/lib/types';
 //hh deploy --network hardhat|localhost|rinkeby|mainnet
 task(TASK_DEPLOY, 'Deploy contract')
   .setAction(async (args, hre) => {
-    let deployerWallet: SignerWithAddress;
-
     const network: Network = await hre.ethers.provider.getNetwork();
     console.log(`network: ${network.name}`);
-    
-    [deployerWallet] = await hre.ethers.getSigners();
+
+    const wallets: SignerWithAddress[] = await hre.ethers.getSigners();
+    const deployerWallet = wallets[0];
+
     const address = await deployerWallet.getAddress();
     console.log(`deployer address: ${address}`);
 

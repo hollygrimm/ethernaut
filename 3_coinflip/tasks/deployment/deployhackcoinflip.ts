@@ -7,16 +7,15 @@ import { Network } from '@ethersproject/networks/lib/types';
 //hh deploy --network hardhat|localhost|rinkeby|mainnet
 task(TASK_DEPLOY_HACKCOINFLIP, 'Deploy HackCoinFlip contract')
   .setAction(async (args, hre) => {
-    let deployer: SignerWithAddress;
-
     const network: Network = await hre.ethers.provider.getNetwork();
     console.log(`network: ${network.name}`);
     
-    [deployer] = await hre.ethers.getSigners();
-    const address = await deployer.getAddress();
+    const wallets: SignerWithAddress[] = await hre.ethers.getSigners();
+    const userWallet = wallets[1];
+    const address = await userWallet.getAddress();
     console.log(`deployer address: ${address}`);
 
-    var contractAddress = '';
+    let contractAddress = '';
     if (network.name === 'rinkeby') {
       contractAddress = process.env.RINKEBY_COINFLIP_CONTRACT_ADDRESS || '';
     } else if (network.name === 'unknown') { //localhost network
@@ -25,7 +24,7 @@ task(TASK_DEPLOY_HACKCOINFLIP, 'Deploy HackCoinFlip contract')
 
     const contractFactory = (await hre.ethers.getContractFactory(
       'HackCoinFlip',
-      deployer
+      userWallet
     )) as HackCoinFlip__factory;
 
     console.log('Deploying HackCoinFlip...');

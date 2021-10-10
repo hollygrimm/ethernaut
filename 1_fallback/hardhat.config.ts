@@ -14,6 +14,9 @@ import './tasks/deployment/deploy';
 import './tasks/operations/withdraw';
 
 const INFURA_API_KEY = process.env.INFURA_API_KEY || '';
+const RINKEBY_DUMMY_PRIVATE_KEY =
+    process.env.RINKEBY_DUMMY_PRIVATE_KEY ||
+    '';
 const RINKEBY_PRIVATE_KEY =
     process.env.RINKEBY_PRIVATE_KEY ||
     '';
@@ -31,7 +34,7 @@ const config: HardhatUserConfig = {
         localhost: {},
         rinkeby: {
             url: `https://rinkeby.infura.io/v3/${INFURA_API_KEY}`,
-            accounts: [RINKEBY_PRIVATE_KEY],
+            accounts: [RINKEBY_DUMMY_PRIVATE_KEY, RINKEBY_PRIVATE_KEY],
         },
         coverage: {
             url: 'http://127.0.0.1:8555', // Coverage launches its own ganache-cli client

@@ -11,16 +11,16 @@ import abi from '../../data/abi/HackCoinFlip.json';
 task(TASK_COINFLIP, 'Break this contract')
   .setAction(async (_taskArgs, hre) => {
 
-    let userWallet: SignerWithAddress;
+    const wallets: SignerWithAddress[] = await hre.ethers.getSigners();
+    const userWallet = wallets[1];
 
-    [userWallet] = await hre.ethers.getSigners();
     const address = await userWallet.getAddress();
     console.log(`user address: ${address}`);
 
     const network: Network = await hre.ethers.provider.getNetwork();
     console.log(`network: ${network.name}`);
 
-    var contractAddress = '';
+    let contractAddress = '';
     if (network.name === 'rinkeby') {
       contractAddress = process.env.RINKEBY_HACKCOINFLIP_CONTRACT_ADDRESS || '';
     } else if (network.name === 'unknown') { //localhost network
@@ -33,7 +33,9 @@ task(TASK_COINFLIP, 'Break this contract')
     const hackFlipTx: ContractTransaction = await contract.connect(userWallet)
       .hackFlip({ gasLimit: 150000 });
 
-    let receipt: ContractReceipt = await hackFlipTx.wait();
+    const receipt: ContractReceipt = await hackFlipTx.wait();
+
+    console.log(`status: ${receipt.status}`);
 
     const wins: BigNumber = await contract.getWins();
     console.log(`consecutive wins: ${wins}`);

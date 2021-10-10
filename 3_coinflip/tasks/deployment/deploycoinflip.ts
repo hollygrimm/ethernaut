@@ -7,18 +7,17 @@ import { Network } from '@ethersproject/networks/lib/types';
 //hh deploy --network hardhat|localhost|rinkeby|mainnet
 task(TASK_DEPLOY_COINFLIP, 'Deploy CoinFlip contract')
   .setAction(async (args, hre) => {
-    let deployer: SignerWithAddress;
-
     const network: Network = await hre.ethers.provider.getNetwork();
     console.log(`network: ${network.name}`);
     
-    [deployer] = await hre.ethers.getSigners();
-    const address = await deployer.getAddress();
+    const wallets: SignerWithAddress[] = await hre.ethers.getSigners();
+    const deployerWallet = wallets[0];
+    const address = await deployerWallet.getAddress();
     console.log(`deployer address: ${address}`);
 
     const contractFactory = (await hre.ethers.getContractFactory(
       'CoinFlip',
-      deployer
+      deployerWallet
     )) as CoinFlip__factory;
 
     console.log('Deploying CoinFlip...');
