@@ -1,0 +1,8 @@
+[
+  "function Fal1out() payable",
+  "function allocate() payable",
+  "function allocatorBalance(address allocator) view returns (uint256)",
+  "function collectAllocations()",
+  "function owner() view returns (address)",
+  "function sendAllocation(address allocator)"
+]
