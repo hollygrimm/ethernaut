@@ -35,10 +35,18 @@ task(TASK_COINFLIP, 'Break this contract')
 
     const receipt: ContractReceipt = await hackFlipTx.wait();
 
-    console.log(`status: ${receipt.status}`);
+    if (receipt.events) {
+      const event = receipt.events.filter(e => e.event === 'WinsUpdated')[0];
+
+      if (event.args) {
+        console.log(`Wins emitted from WinsUpdated: ${event.args}`);
+      }
+    } else {
+      console.log('Failed to emit WinsUpdated event');
+    }
 
     const wins: BigNumber = await contract.getWins();
-    console.log(`consecutive wins: ${wins}`);
+    console.log(`Consecutive wins: ${wins}`);
 
     process.exit(0)
   });

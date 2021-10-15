@@ -41,7 +41,8 @@ describe('HackCoinFlip Tests', () => {
         it('Hack Flip ten times', async () => {
             for(let i = 1; i==10; i++){
                 await expect(hackContract.connect(userWallet).hackFlip())
-                .to.emit(hackContract, 'WinsUpdated');
+                .to.emit(hackContract, 'WinsUpdated')
+                .withArgs(i);
     
                 expect(await hackContract.getWins()).to.equal(i);
             }
