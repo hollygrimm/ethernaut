@@ -58,6 +58,8 @@ Supply the private key of the contract owner in .env. **Never** share your priva
 
 ### 3. Coin Flip [README.md](3_coinflip/README.md)
 
+### 4. Telephone [README.md](4_telephone/README.md)
+
 ## Recommended Visual Studio Code Extensions
 
 * <https://github.com/juanfranblanco/vscode-solidity> by Juan Blanco
