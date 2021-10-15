@@ -12,8 +12,8 @@ task(TASK_DEPLOY_COINFLIP, 'Deploy CoinFlip contract')
     
     const wallets: SignerWithAddress[] = await hre.ethers.getSigners();
     const deployerWallet = wallets[0];
-    const address = await deployerWallet.getAddress();
-    console.log(`deployer address: ${address}`);
+    const deployerAddress = await deployerWallet.getAddress();
+    console.log(`deployer address: ${deployerAddress}`);
 
     const contractFactory = (await hre.ethers.getContractFactory(
       'CoinFlip',

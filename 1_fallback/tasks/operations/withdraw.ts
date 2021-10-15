@@ -45,7 +45,7 @@ task(TASK_WITHDRAW, 'Withdraw from Contract')
     const contractReceipt: ContractReceipt = await withdrawTx.wait();
 
     if (contractReceipt.status === 1) {
-      console.log("Withdraw success");
+      console.log("Withdraw successful");
     } else {
       console.log('Withdraw failed');
     }
