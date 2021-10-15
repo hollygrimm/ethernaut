@@ -1,0 +1,4 @@
+[
+  "function changeOwner(address _owner)",
+  "function owner() view returns (address)"
+]
