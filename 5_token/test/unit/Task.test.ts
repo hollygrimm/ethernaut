@@ -32,7 +32,7 @@ describe('Token Tests', () => {
     });
 
     describe('Function tests', async () => {
-        it('Balance of user to be equal to initialSupply', async () => {
+        it('Balance of deployer wallet to be equal to initialSupply', async () => {
             expect(await token.balanceOf(deployerWallet.address)).to.equal(initialSupply);
         });
     });
