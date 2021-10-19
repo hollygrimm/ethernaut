@@ -1,0 +1,5 @@
+[
+  "event BalanceUpdated(uint256 value)",
+  "function collect() payable returns (uint256)",
+  "function selfDestroy()"
+]

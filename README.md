@@ -60,6 +60,12 @@ Supply the private key of the contract owner in .env. **Never** share your priva
 
 ### 4. Telephone [README.md](4_telephone/README.md)
 
+### 5. Token [README.md](5_token/README.md)
+
+### 6. Delegation [README.md](6_delegation/README.md)
+
+### 7. Force [README.md](7_force/README.md)
+
 ## Recommended Visual Studio Code Extensions
 
 * <https://github.com/juanfranblanco/vscode-solidity> by Juan Blanco
