@@ -1,0 +1,4 @@
+[
+  "function locked() view returns (bool)",
+  "function unlock(bytes32 _password)"
+]
