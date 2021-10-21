@@ -2,6 +2,7 @@
 pragma solidity ^0.6.0;
 
 import "./force.sol";
+import "hardhat/console.sol";
 
 /**
  * @title Pwn Force
@@ -23,6 +24,7 @@ contract PwnForce {
     }
 
     function selfDestroy() public {
+        console.log(msg.sender, "PwnForce Contract.selfDestroy() about to call selfdestruct");
         selfdestruct(_forceContractAddress);
     }
 }
