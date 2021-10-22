@@ -1,0 +1,5 @@
+[
+  "function _king() view returns (address)",
+  "function owner() view returns (address)",
+  "function prize() view returns (uint256)"
+]
